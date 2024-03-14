@@ -15,13 +15,16 @@ class Profile {
                 chunks.push(users.slice(i, i + 10));
               }
               if(!chunks[pageNumber - 1]){
-                return res.send('Doesnt exis')
+                res.status(404)
+                return res.render('error404')
               }
             return res.render('profiles', {users: chunks[pageNumber - 1], pages: chunks.length, pageNumber})
         }
         return res.redirect('/')
         }catch(error){
             console.log(error)
+            res.status(500)
+            return res.render('serverError')
         }
     }
 
@@ -39,6 +42,8 @@ class Profile {
         return res.redirect('/')
         }catch(error){
             console.log(error)
+            res.status(500)
+            return res.render('serverError')
         }
     }
 
@@ -62,6 +67,8 @@ class Profile {
         return res.redirect('/')
         }catch(error){
             console.log(error)
+            res.status(500)
+            return res.render('serverError')
         }
     }
 }

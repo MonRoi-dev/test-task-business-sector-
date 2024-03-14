@@ -1,0 +1,18 @@
+<nav>
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo">Test app</a>
+      
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if(user) { %>
+        <form id="logoutForm" action="/user/logout" method="post">
+        <li><a href="/profile?page=1">All profiles</a></li>
+        <li><a href="/profile/<%= user.id %>">My profile</a></li>
+        <li><a href="#" onclick="document.getElementById('logoutForm').submit();">Log out</a></li>
+        </form>
+        <%} else {%>
+            <li><a href="/user/login">Log In</a></li>
+            <li><a href="/user/register" >Register</a></li>
+        <% } %>    
+      </ul>
+    </div>
+  </nav>

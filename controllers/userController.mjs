@@ -44,10 +44,11 @@ class User {
 
             const token = generateToken(user)
             res.cookie('token', token, {httpOnly: true, maxAge: 86400000})
-
             return res.redirect('/')
         }catch(error){
             console.log(error)
+            res.status(500)
+            return res.render('serverError')
         }
     }
 
@@ -71,11 +72,11 @@ class User {
             const token = generateToken(user)
 
             res.cookie('token', token, {httpOnly: true, maxAge: 86400000})
-            res.send('Succesfully registred!')
-
             return res.redirect('/')
         }catch(error){
             console.log(error)
+            res.status(500)
+            return res.render('serverError')
         }
     }
 
@@ -88,6 +89,8 @@ class User {
             }
         }catch(error){
             console.log(error)
+            res.status(500)
+            return res.render('serverError')
         }
     }
 
@@ -100,6 +103,22 @@ class User {
             }
         }catch(error){
             console.log(error)
+            res.status(500)
+            return res.render('serverError')
+        }
+    }
+
+    async logout(req, res) {
+        try{
+            if(isAuth){
+            res.clearCookie("token");
+            return res.redirect('/')
+            }
+            return res.redirect('/')
+        }catch(error){
+            console.log(error)
+            res.status(500)
+            return res.render('serverError')
         }
     }
 

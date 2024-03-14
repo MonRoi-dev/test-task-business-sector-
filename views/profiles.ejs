@@ -1,31 +1,40 @@
 <%- include('partials/head') %>
 <body>
-        <% users.forEach(function(user) { %>
-            <div class="row">
-                <a href="http://localhost:5000/profile/<%= user.id %>">
-                <div class="col s2">
-                  <div class="card">
-                    <div class="card-image">
-                      <img src="/images/<%= user.image %>">
+<%- include('partials/navbar') %>
 
-                    </div>
-                    <div class="card-content">
-                        <div class="card-title">
-                            <span class="card-title"><%= user.name %> <%= user.surname %></span>
+<div class="row">
+    <% for (let i = 0; i < users.length; i += 5) { %>
+        <div class="col s12">
+            <% for (let j = i; j < Math.min(i + 5, users.length); j++) { %>
+                <div class="col s2">
+                    <div class="card">
+                        <a href="/profile/<%= users[j].id %>">
+                        <div class="card-image">
+                            <img src="/images/<%= users[j].image %>">
                         </div>
-                      <p>
-                        <%= user.email %>
-                      </p>
+                        <div class="card-content">
+                            <div class="card-title">
+                                <span class="card-title"><%= users[j].name %> <%= users[j].surname %></span>
+                            </div>
+                            <p>
+                                <%= users[j].email %>
+                            </p>
+                        </div>
+                    </a>
                     </div>
-                  </div>
                 </div>
-            </a>
-              </div>
-        <% }) %>
-        <ul class="pagination">
-            <% for(let i = 1; i <= pages; i++) { %>
-                <li class="<%= +pageNumber === i ? 'active ' : 'waves-effect' %>"><a href="http://localhost:5000/profile?page=<%= i %>"><%= i %></a></li>
             <% } %>
-        </ul>
+        </div>
+    <% } %>
+</div>
+
+<div class="row">
+    <ul class="pagination col offset-s5">
+        <% for(let i = 1; i <= pages; i++) { %>
+            <li class="<%= +pageNumber === i ? 'active ' : 'waves-effect' %>"><a href="http://localhost:5000/profile?page=<%= i %>"><%= i %></a></li>
+        <% } %>
+    </ul>
+</div>
+
 </body>
 </html>

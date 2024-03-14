@@ -21,6 +21,9 @@ app.use(mainRouter)
 app.use('/user', userRouter)
 app.use('/profile', profileRouter)
 
+app.use(function(req, res, next) {
+    return res.status(404).render('error404');
+  });
 
 app.listen(PORT, () => {
     console.log(`Server started on port: ${PORT}`)
