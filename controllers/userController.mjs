@@ -110,7 +110,7 @@ class User {
 
     async logout(req, res) {
         try{
-            if(isAuth){
+            if(req.isAuth){
             res.clearCookie("token");
             return res.redirect('/')
             }
