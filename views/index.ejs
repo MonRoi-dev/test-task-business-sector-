@@ -1,36 +1,11 @@
 <%- include('partials/head') %>
 <body>
-    <div class="row">
-        <div class="col s6 offset-s3">
-          <div class="card">
-
-            <span class="card-title col s12"><h4><strong>Log In</strong></h4></span>
-
-            <form action="/user/login" method="post">
-                <!-- Email input -->
-                <div class="row">
-                    <div class="input-field col s10 offset-s1">
-                      <input id="email" name="email" type="email" class="validate">
-                      <label for="email">Email</label>
-                    </div>
-                </div>
-                <!-- Password input -->
-                <div class="row">
-                    <div class="input-field col s10 offset-s1"> 
-                      <input id="password" name="password" type="password" class="validate">
-                      <label for="password">Password</label>
-                    </div>
-                </div>
-                <!-- Submit button -->
-                <div class="row">
-                    <div class="card-action col s12 center-align">
-                      <button class="btn waves-effect waves-light" type="submit">Log In</button>     
-                    </div>
-                </div>    
-            </form>
-
-          </div>
-        </div>
-    </div>
+    <% if(user) { %>
+        <h1>Hello, <%= user.name %></h1>
+        <a href="/profile?page=1"><h3>Now you can go to profiles</h3></a>
+        
+    <% } else { %>
+        <a href="/user/login"><h1>You should login first!</h1></a>
+    <% } %>  
 </body>
 </html>

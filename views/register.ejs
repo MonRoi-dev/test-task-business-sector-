@@ -1,0 +1,47 @@
+<%- include('partials/head') %>
+<body>
+    <div class="row">
+        <div class=" col s6 offset-s3">
+          <div class="card">
+
+                <span class="card-title center-align"><h4><strong>Register</strong></h4></span>
+            <form action="/user/register" method="post">
+                <!-- Name inputs -->
+                <div class="row">
+                    <div class="input-field col s4 offset-s2">
+                      <input id="first_name" name="name" type="text" class="validate">
+                      <label for="first_name">First Name</label>
+                    </div>
+                    <div class="input-field col s4 ">
+                      <input id="last_name" name="surname" type="text" class="validate">
+                      <label for="last_name">Last Name</label>
+                    </div>
+
+                <!-- Email input -->
+                <div class="row">
+                    <div class="input-field col s10 offset-s1">
+                      <input id="email" name="email" type="email" class="validate">
+                      <label for="email">Email</label>
+                    </div>
+                </div>
+                <!-- Password input -->
+                <div class="row">
+                    <div class="input-field col s10 offset-s1"> 
+                      <input id="password" name="password" type="password" class="validate">
+                      <label for="password">Password</label>
+                    </div>
+                </div>
+                <!-- Submit button -->
+                <div class="row">
+                    <div class="card-action col s12 ">
+                      <button class="btn waves-effect waves-light center-align" type="submit">Register</button>
+                      <a class="col offset-s2" href="/user/login">Already have account?</a>  
+                    </div>
+                </div>    
+            </form>
+
+          </div>
+        </div>
+    </div>
+</body>
+</html>

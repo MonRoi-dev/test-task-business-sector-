@@ -1,0 +1,46 @@
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <form action="/profile/<%= user.id %>?_method=Patch" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="input-field col s6">
+                  <input id="first_name" name="name" type="text" class="validate">
+                  <label for="first_name">First Name</label>
+                </div>
+
+                    <div class="input-field col s6">
+                      <input id="last_name" name="surname" type="text" class="validate">
+                      <label for="last_name">Last Name</label>
+                    </div>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="email" name="email" type="email" class="validate">
+                    <label for="email">Email</label>
+                  </div>
+
+
+                <div class="row">
+                  <select class="browser-default col s4" name="sex" id="gender">
+                      <option value="MALE">MALE</option>
+                      <option value="FEMALE">FEMALE</option>
+                  </select>
+                  </div>
+
+                  <div class="row">
+                  <div class="file-field input-field">
+                    <div class="btn">
+                      <span>File</span>
+                      <input type="file" name="image" accept="image/jpeg, image/jpg, image/png" >
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                      </div>
+                    </div>
+                </div>
+    </div>
+    <div class="modal-footer center-align">
+        <button class="btn waves-effect waves-light" type="submit" >Submit</button>
+    </div>
+    </form>
+</div>
+  </div>

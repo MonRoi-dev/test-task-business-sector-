@@ -1,0 +1,39 @@
+<%- include('partials/head') %>
+<body>
+    <div class="row">
+        <div class="col s6 offset-s3">
+          <div class="card">
+            <div class="card-image">
+              <img src="/images/<%= user.image %>">
+            </div>
+            <div class="card-title  center-align"><span class="card-title"><%= user.name %> <%= user.surname %></span></div>
+            <div class="card-content">
+                <p><strong>Email:</strong> <%= user.email %></p>
+                <p><strong>Sex:</strong> <%= user.sex %></p>
+                <p><strong>Registration date:</strong> <%= user.createdAt %></p>
+            </div>
+            <div class="card-action center-align">
+                <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Update</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%- include('partials/modal') %>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });
+
+</script>
+
+</body>
+</html>
