@@ -2,6 +2,9 @@
 <body>
 <%- include('partials/navbar') %>
 
+<% if(message) { %> 
+    <h1><%= message %></h1>
+ <% } else { %>
 <div class="row">
     <% for (let i = 0; i < users.length; i += 5) { %>
         <div class="col s12">
@@ -35,6 +38,6 @@
         <% } %>
     </ul>
 </div>
-
+<% } %>
 </body>
 </html>

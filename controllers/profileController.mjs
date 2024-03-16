@@ -8,17 +8,13 @@ class Profile {
         try{
             if(req.isAuth){
             const pageNumber = +req.query.page || 1
-            const chunks = []
-            const users = await prisma.user.findMany({orderBy: {createdAt: 'desc'}})
-
-            for (let i = 0; i < users.length; i += 10) {
-                chunks.push(users.slice(i, i + 10));
-              }
-              if(!chunks[pageNumber - 1]){
-                res.status(404)
-                return res.render('error404')
-              }
-            return res.render('profiles', {users: chunks[pageNumber - 1], pages: chunks.length, pageNumber})
+            const chunk = (pageNumber - 1) * 10
+            const users = await prisma.user.findMany({orderBy: {createdAt: 'desc'}, skip: chunk, take: 10 })
+            if(!users) {
+                return res.redirect('profiles', {message: 'Where are no users yet'})
+            }
+            const pages = await prisma.user.count() / 10
+            return res.render('profiles', {users, pages: Math.ceil(pages), pageNumber, message: null})
         }
         return res.redirect('/')
         }catch(error){
