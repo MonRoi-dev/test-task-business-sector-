@@ -1,15 +1,13 @@
 class Main {
-
-    getMain(req, res){
-        try{
-            res.render('index')
-        }catch(error){
-            console.log(error)
-            res.status(500)
-            return res.render('serverError')
-        }
-    }
-
+	getMain(req, res) {
+		try {
+			res.render('index');
+		} catch (error) {
+			console.log(error);
+			res.status(500);
+			return res.render('serverError');
+		}
+	}
 }
 
-export default new Main()
+export default new Main();
